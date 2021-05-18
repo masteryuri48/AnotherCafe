@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="shopViewModel"
+            type="com.example.sa.viewmodels.ShopViewModel" />
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.ProductDetailFragment">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <ImageView
+                android:id="@+id/productImageView"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:scaleType="fitCenter"
+                android:src="@drawable/coffee01_blend"
+                android:productImage="@{shopViewModel.products.imageUrl}"
+
+                />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="16dp" />
+
+            <TextView
+                android:id="@+id/productNameTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{shopViewModel.products.name}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/priceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(shopViewModel.products.price) + '฿'}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <TextView
+                android:id="@+id/availableTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{shopViewModel.products.available ? `Available` : `Out of stock`}"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:textColor="@{shopViewModel.products.available ? @color/purple_700 : @color/black}" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Description"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="A coffee blend is a coffee that is made up of coffee beans originating from more than one place. “Place” here does not mean just different countries. This can mean a very micro-level division of place such as varying altitudes on the same producing farm, or it can mean different regions of the same country or different small areas within the same producing region. From here, as you can guess, coffee blends come in many shapes and forms. From commercial coffee blends found in coffee chains, to ‘single origin’ coffees that one assumes are only one type of coffee, the phrase “coffee blend” is all-encompassing, though this is often miscommunicated."
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Body2" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="4dp" />
+
+            <Button
+                android:id="@+id/addToCartButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:enabled="@{shopViewModel.products.available}"
+                android:text="Add to cart"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+                android:onClick="@{() -> shopViewModel.addItemToCart(shopViewModel.products)}"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+</layout>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".views.HomeFragment">
+
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/slide"
+        android:layout_width="match_parent"
+        android:layout_height="210dp"
+        app:auto_cycle="true"
+        app:corner_radius="5"
+        app:delay="0"
+        app:error_image="@drawable/bg"
+        app:period="2500"
+        app:placeholder="@drawable/bg">
+
+    </com.denzcoskun.imageslider.ImageSlider>
+
+    <TextView
+        android:id="@+id/nope"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textWel"
+        android:layout_width="match_parent"
+        android:layout_height="67dp"
+        android:fontFamily="@font/atma_semibold"
+        android:text="  Welcome!"
+        android:textSize="36sp" />
+
+    <Button
+        android:id="@+id/ordernow"
+        android:layout_width="match_parent"
+        android:layout_height="102dp"
+        android:text="Order Now" />
+</LinearLayout>
